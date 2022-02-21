@@ -26,7 +26,7 @@ export const Categories = [
   {
     id: 0,
     icon: iconSearch,
-    label: 'VersaGames',
+    label: 'Bopp Music',
   },
   {
     id: 1,

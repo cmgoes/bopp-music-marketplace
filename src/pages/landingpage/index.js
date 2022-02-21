@@ -48,7 +48,7 @@ const cards = [
     icon: card4,
     title: 'Maximum Security',
     description:
-      'The Versagames marketplace authenticates game collections and NFTs so users can avoid scams.',
+      'The Bopp Music marketplace authenticates game collections and NFTs so users can avoid scams.',
     path: '/explore',
   },
 ];
@@ -109,13 +109,14 @@ const LandingPage = () => {
             <div
               className={styles.title}
               style={{ color: '#FFF' }}
-            >{`Welcome to the VersaGames Marketplace`}</div>
+            >{`Welcome to Bopp Music NFT Marketplace`}</div>
             <div className={styles.subtitle}>
-              Explore the extensive VersaGames Marketplace!
+              Bopp music is the first decentralized music streaming service on
+              the Ethereum blockchain
             </div>
             <div className={styles.subtitle}>
               <strong>
-                Warning: VersaGames Marketplace is still in MVP stage.
+                Warning: Bopp music Marketplace is still in MVP stage.
               </strong>
             </div>
 
@@ -158,7 +159,7 @@ const LandingPage = () => {
       </div>
       <div className={styles.about}>
         <div className={styles.aboutInner}>
-          <div className={styles.aboutTitle}>VersaGames Marketplace</div>
+          <div className={styles.aboutTitle}>Bopp Music Marketplace</div>
           <div className={styles.aboutCards}>
             {cards.map((card, key) =>
               renderAboutCard(
