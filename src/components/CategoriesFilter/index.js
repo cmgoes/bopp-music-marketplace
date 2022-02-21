@@ -37,8 +37,8 @@ const useStyles = makeStyles(() => ({
     },
   },
   logo: {
-    width: 40,
-    height: 40,
+    width: '100%',
+    height: '100%',
     borderRadius: '50%',
     border: '1px solid #D9E1EE',
     marginRight: 14,
@@ -47,8 +47,8 @@ const useStyles = makeStyles(() => ({
     justifyContent: 'center',
 
     '& img': {
-      width: 24,
-      height: 24,
+      width: '100%',
+      height: '100%',
     },
   },
   name: {

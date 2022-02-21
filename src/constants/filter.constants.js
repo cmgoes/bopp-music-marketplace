@@ -5,7 +5,14 @@
 // import iconTrading from 'assets/svgs/cardboard.svg';
 // import iconVirtual from 'assets/svgs/monster.svg';
 // import iconDomain from 'assets/svgs/domain.svg';
-import iconSearch from 'assets/svgs/magnifier.svg';
+// import iconSearch from 'assets/svgs/magnifier.svg';
+import iconHiphop from 'assets/imgs/hiphop.png';
+import iconRock from 'assets/imgs/rock.png';
+import iconPopmusic from 'assets/imgs/popmusic.png';
+import iconJazz from 'assets/imgs/jazz.png';
+import iconMetal from 'assets/imgs/metal.png';
+import iconReggae from 'assets/imgs/reggae.png';
+import iconAfrobeat from 'assets/imgs/afrobeat.png';
 
 export const GroupFilters = [
   {
@@ -25,38 +32,38 @@ export const GroupFilters = [
 export const Categories = [
   {
     id: 0,
-    icon: iconSearch,
-    label: 'Bopp Music',
+    icon: iconHiphop,
+    label: 'Hip Hop',
   },
   {
     id: 1,
-    icon: iconSearch,
-    label: 'Verified Games',
+    icon: iconRock,
+    label: 'Rock',
   },
   {
     id: 2,
-    icon: iconSearch,
-    label: 'Games',
+    icon: iconPopmusic,
+    label: 'Pop Music',
   },
   {
     id: 3,
-    icon: iconSearch,
-    label: 'NFTs',
+    icon: iconJazz,
+    label: 'Jazz',
   },
   {
     id: 4,
-    icon: iconSearch,
-    label: 'Trading Cards',
+    icon: iconMetal,
+    label: 'Metal',
   },
   {
     id: 5,
-    icon: iconSearch,
-    label: 'Promotion',
+    icon: iconReggae,
+    label: 'Reggae',
   },
   {
     id: 6,
-    icon: iconSearch,
-    label: 'Domain Names',
+    icon: iconAfrobeat,
+    label: 'Afro Beat',
   },
 ];
 

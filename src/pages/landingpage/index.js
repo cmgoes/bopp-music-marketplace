@@ -17,7 +17,7 @@ import card1 from 'assets/svgs/card1.svg';
 import card2 from 'assets/svgs/card2.svg';
 import card3 from 'assets/svgs/card3.svg';
 import card4 from 'assets/svgs/card4.svg';
-import search from 'assets/svgs/magnifier.svg';
+// import search from 'assets/svgs/magnifier.svg';
 import background from 'assets/imgs/background.jpg';
 import playBrand from 'assets/imgs/awesomebrand.jpg';
 
@@ -178,7 +178,7 @@ const LandingPage = () => {
             {Categories.map(cat =>
               renderCategoryCard(cat.id, cat.icon, cat.label)
             )}
-            {renderCategoryCard('all', search, 'Explore All NFTs', true)}
+            {/* {renderCategoryCard('all', search, 'Explore All NFTs', true)} */}
           </div>
         </div>
       </div>

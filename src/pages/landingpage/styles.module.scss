@@ -57,7 +57,7 @@
   font-size: 18px;
   line-height: 24px;
   letter-spacing: -0.2px;
-  color: #a2a2ad;
+  color: #000;
 }
 
 .exploreButton {
@@ -222,7 +222,7 @@
   flex: 0 0 calc(33.33% - 26.66px);
   margin-right: 40px;
   margin-bottom: 32px;
-  padding: 37px 24px 24px;
+  // padding: 37px 24px 24px;
   box-sizing: border-box;
   border-radius: 15px;
   background: #ffffff;
@@ -239,8 +239,8 @@
 }
 
 .cardIconWrapper2 {
-  width: 129px;
-  height: 129px;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   box-shadow: 0px 22.9412px 91.7647px #f2f1fa;
   display: flex;
@@ -248,17 +248,19 @@
   justify-content: center;
 
   img {
-    width: 66px;
-    height: 66px;
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
   }
 }
 
 .cardLabelWrapper {
-  margin-top: 66px;
+  // margin-top: 66px;
   width: 100%;
   height: 64px;
-  border-radius: 33px;
-  background: #f6f7f9;
+  // border-radius: 33px;
+  // background: #f6f7f9;
   padding: 18px 10px 18px 26px;
   box-sizing: border-box;
   display: flex;
@@ -293,7 +295,7 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background-color: #008f6e;
+  background-color: #ccafff;
   display: flex;
   align-items: center;
   justify-content: center;
