@@ -110,7 +110,7 @@ const LandingPage = () => {
             <div
               className={styles.title}
               style={{ color: '#000' }}
-            >{`Welcome to Bopp Music NFT Marketplace`}</div>
+            >{`Welcome to Bopp Music Marketplace`}</div>
             <div className={styles.subtitle}>
               Bopp music is the first decentralized music streaming service on
               the Ethereum blockchain

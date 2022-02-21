@@ -231,7 +231,7 @@
   padding: 8px 12px 11px 12px;
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  background-color: #fff;
+  background-color: #ccafff;
   opacity: 1;
 
   &:hover {
@@ -342,18 +342,18 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .header {
-    flex-direction: column;
-  }
+  // .header {
+  //   flex-direction: column;
+  // }
 
   .left {
     width: 100%;
     margin-right: 0;
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
 
-    .searchcont {
-      display: none;
-    }
+    // .searchcont {
+    //   display: none;
+    // }
   }
 
   .menu {
