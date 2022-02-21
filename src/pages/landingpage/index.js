@@ -18,7 +18,7 @@ import card2 from 'assets/svgs/card2.svg';
 import card3 from 'assets/svgs/card3.svg';
 import card4 from 'assets/svgs/card4.svg';
 import search from 'assets/svgs/magnifier.svg';
-// import background from 'assets/imgs/bodyBackground.jpg';
+import background from 'assets/imgs/background.jpg';
 import playBrand from 'assets/imgs/awesomebrand.jpg';
 
 import styles from './styles.module.scss';
@@ -103,7 +103,7 @@ const LandingPage = () => {
       <Header />
       <div
         className={styles.body}
-        // style={{ backgroundImage: `url(${background})` }}
+        style={{ backgroundImage: `url(${background})` }}
       >
         <div className={styles.main}>
           <div className={styles.mainLeft}>
@@ -146,7 +146,7 @@ const LandingPage = () => {
             >
               <div className={styles.cardInfo}>
                 <div className={styles.cardCategory}>Awesome</div>
-                <div className={styles.cardName}>{'Victor Frames'}</div>
+                <div className={styles.cardName}>{'Vector Frames'}</div>
               </div>
               <Link
                 to="/explore/0x972dd206a7c2d4ae46db1db700bc79de1bc59960/0"
