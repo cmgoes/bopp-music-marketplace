@@ -2,9 +2,14 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useHistory, withRouter, NavLink, Link } from 'react-router-dom';
 import cx from 'classnames';
 import Skeleton from 'react-loading-skeleton';
-import { Menu } from '@material-ui/core';
+import { Menu, IconButton } from '@material-ui/core';
 import { useWeb3React } from '@web3-react/core';
-import { ExpandMore, Search as SearchIcon } from '@material-ui/icons';
+import {
+  ExpandMore,
+  Search as SearchIcon,
+  Menu as MenuIcon,
+  Close as CloseIcon,
+} from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
@@ -53,6 +58,8 @@ const Header = ({ border }) => {
   const { wftmModalVisible, connectWalletModalVisible } = useSelector(
     state => state.Modal
   );
+
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -525,17 +532,57 @@ const Header = ({ border }) => {
   );
 
   return (
-    <div className={cx(styles.header, border && styles.hasBorder)}>
-      <div className={styles.left}>
-        <Link to="/" className={styles.logo}>
-          <img src={logoSmallBlue} alt="logo" />
-        </Link>
-        {isSearchbarShown && renderSearchBox()}
-        <div className={styles.secondmenu}>
+    <div
+      className={cx(
+        styles.header,
+        border && styles.hasBorder,
+        mobileOpen && styles.headerFullHeight
+      )}
+    >
+      <div className={cx(styles.headerMenu)}>
+        <div className={styles.left}>
+          <Link to="/" className={styles.logo}>
+            <img src={logoSmallBlue} alt="logo" />
+          </Link>
+          {isSearchbarShown && renderSearchBox()}
+          {/* <div className={styles.secondmenu}>
+            <NavLink
+              to="/explore"
+              className={cx(styles.menuLink, styles.link)}
+              activeClassName={styles.active}
+            >
+              Explore
+            </NavLink>
+            <NavLink
+              to="/create"
+              className={cx(styles.menuLink, styles.link)}
+              activeClassName={styles.active}
+            >
+              Create
+            </NavLink>
+          </div> */}
+        </div>
+        <div className={styles.menu}>
+          {mobileOpen ? (
+            <IconButton
+              className={styles.iconButton}
+              onClick={() => setMobileOpen(false)}
+            >
+              <CloseIcon style={{ color: '#fff' }} />
+            </IconButton>
+          ) : (
+            <IconButton
+              className={styles.iconButton}
+              onClick={() => setMobileOpen(true)}
+            >
+              <MenuIcon style={{ color: '#fff' }} />
+            </IconButton>
+          )}
           <NavLink
             to="/explore"
             className={cx(styles.menuLink, styles.link)}
             activeClassName={styles.active}
+            style={{ color: '#fff' }}
           >
             Explore
           </NavLink>
@@ -543,66 +590,217 @@ const Header = ({ border }) => {
             to="/create"
             className={cx(styles.menuLink, styles.link)}
             activeClassName={styles.active}
+            style={{ color: '#fff' }}
           >
             Create
           </NavLink>
-        </div>
-      </div>
-      <div className={styles.menu}>
-        {isSearchbarShown && renderSearchBox()}
-        <NavLink
-          to="/explore"
-          className={cx(styles.menuLink, styles.link)}
-          activeClassName={styles.active}
-          style={{ color: '#fff' }}
-        >
-          Explore
-        </NavLink>
-        <NavLink
-          to="/create"
-          className={cx(styles.menuLink, styles.link)}
-          activeClassName={styles.active}
-          style={{ color: '#fff' }}
-        >
-          Create
-        </NavLink>
-        {account ? (
-          <div
-            className={cx(styles.account, styles.menuLink)}
-            onClick={handleProfileMenuOpen}
-          >
-            {loading ? (
-              <Skeleton className={styles.avatar} />
-            ) : user?.imageHash ? (
-              <img
-                src={`https://cloudflare-ipfs.com/ipfs/${user?.imageHash}`}
-                width="24"
-                height="24"
-                className={styles.avatar}
-              />
-            ) : (
-              <Identicon
-                account={account}
-                size={36}
-                className={styles.avatar}
-              />
-            )}
-            <div className={styles.profile}>
-              <div className={styles.address}>
-                {loading ? (
-                  <Skeleton width={120} />
-                ) : (
-                  user?.alias || shortenAddress(account)
-                )}
+          {account ? (
+            <div
+              className={cx(styles.account, styles.menuLink)}
+              onClick={handleProfileMenuOpen}
+            >
+              {loading ? (
+                <Skeleton className={styles.avatar} />
+              ) : user?.imageHash ? (
+                <img
+                  src={`https://cloudflare-ipfs.com/ipfs/${user?.imageHash}`}
+                  width="24"
+                  height="24"
+                  className={styles.avatar}
+                />
+              ) : (
+                <Identicon
+                  account={account}
+                  size={36}
+                  className={styles.avatar}
+                />
+              )}
+              <div className={styles.profile}>
+                <div className={styles.address}>
+                  {loading ? (
+                    <Skeleton width={120} />
+                  ) : (
+                    user?.alias || shortenAddress(account)
+                  )}
+                </div>
+                <div className={styles.network}>
+                  {loading ? <Skeleton width={80} /> : NETWORK_LABEL[chainId]}
+                </div>
               </div>
-              <div className={styles.network}>
-                {loading ? <Skeleton width={80} /> : NETWORK_LABEL[chainId]}
+
+              <ExpandMore
+                className={cx(styles.expand, isMenuOpen && styles.expanded)}
+              />
+            </div>
+          ) : (
+            <div
+              className={cx(styles.connect, styles.menuLink)}
+              onClick={handleConnectWallet}
+            >
+              Connect Wallet
+            </div>
+          )}
+        </div>
+        {renderMenu}
+      </div>
+      <div
+        className={cx(styles.mobileMenu, mobileOpen && styles.mobileMenuOpen)}
+      >
+        <ul className={styles.mobileMenuLists}>
+          <li className={styles.mobileMenuList}>
+            <NavLink
+              to="/explore"
+              className={cx(styles.menuLink, styles.link)}
+              activeClassName={styles.active}
+              // style={{ color: '#fff' }}
+            >
+              Explore
+            </NavLink>
+          </li>
+          <li className={styles.mobileMenuList}>
+            <NavLink
+              to="/create"
+              className={cx(styles.menuLink, styles.link)}
+              activeClassName={styles.active}
+              // style={{ color: '#fff' }}
+            >
+              Create
+            </NavLink>
+          </li>
+          {account && (
+            <div
+              className={cx(styles.menuItem, styles.topItem)}
+              onClick={goToMyProfile}
+            >
+              <img src={iconUser} className={styles.menuIcon} />
+              My Profile
+            </div>
+          )}
+          <div className={styles.menuItem} onClick={goToNotificationSettings}>
+            <img src={iconNotification} className={styles.menuIcon} />
+            Notification Settings
+          </div>
+          <div className={styles.menuItem} onClick={handleRegisterCollection}>
+            <img src={iconEdit} className={styles.menuIcon} />
+            Register Existing Collection
+          </div>
+          <div className={styles.menuItem} onClick={openWrapStation}>
+            <img src={iconSwap} className={styles.menuIcon} />
+            FTM / WFTM Station
+          </div>
+
+          <div className={styles.menuSeparator} />
+          {account?.toLowerCase() === ADMIN_ADDRESS.toLowerCase()
+            ? [
+                <div key={0} className={styles.menuItem} onClick={addMod}>
+                  Add Mod
+                </div>,
+                <div key={1} className={styles.menuItem} onClick={removeMod}>
+                  Remove Mod
+                </div>,
+                <div
+                  key={2}
+                  className={styles.menuItem}
+                  onClick={reviewCollections}
+                >
+                  Review Collections
+                </div>,
+                <div
+                  key={3}
+                  className={styles.menuItem}
+                  onClick={banCollection}
+                >
+                  Ban Collection
+                </div>,
+                <div
+                  key={4}
+                  className={styles.menuItem}
+                  onClick={unbanCollection}
+                >
+                  Unban Collection
+                </div>,
+                <div key={5} className={styles.menuItem} onClick={banItems}>
+                  Ban Items
+                </div>,
+                <div key={6} className={styles.menuItem} onClick={banUser}>
+                  Ban a user
+                </div>,
+                <div key={6} className={styles.menuItem} onClick={unbanUser}>
+                  Unban a user
+                </div>,
+                <div
+                  key={7}
+                  className={styles.menuItem}
+                  onClick={boostCollection}
+                >
+                  Boost Collection
+                </div>,
+                <div key={8} className={styles.menuSeparator} />,
+              ]
+            : isModerator
+            ? [
+                <div
+                  key={1}
+                  className={styles.menuItem}
+                  onClick={banCollection}
+                >
+                  Ban Collection
+                </div>,
+                <div key={2} className={styles.menuItem} onClick={banItems}>
+                  Ban Items
+                </div>,
+                <div key={3} className={styles.menuItem} onClick={banUser}>
+                  Ban a user
+                </div>,
+                <div key={6} className={styles.menuItem} onClick={unbanUser}>
+                  Unban a user
+                </div>,
+                <div key={4} className={styles.menuSeparator} />,
+              ]
+            : null}
+        </ul>
+        {account ? (
+          <div>
+            <div
+              className={cx(styles.account, styles.menuLink)}
+              style={{ marginRight: 0 }}
+            >
+              {loading ? (
+                <Skeleton className={styles.avatar} />
+              ) : user?.imageHash ? (
+                <img
+                  src={`https://cloudflare-ipfs.com/ipfs/${user?.imageHash}`}
+                  width="24"
+                  height="24"
+                  className={styles.avatar}
+                />
+              ) : (
+                <Identicon
+                  account={account}
+                  size={36}
+                  className={styles.avatar}
+                />
+              )}
+              <div className={styles.profile}>
+                <div className={styles.address}>
+                  {loading ? (
+                    <Skeleton width={120} />
+                  ) : (
+                    user?.alias || shortenAddress(account)
+                  )}
+                </div>
+                <div className={styles.network}>
+                  {loading ? <Skeleton width={80} /> : NETWORK_LABEL[chainId]}
+                </div>
               </div>
             </div>
-
-            <ExpandMore
-              className={cx(styles.expand, isMenuOpen && styles.expanded)}
-            />
+            <div
+              className={styles.signOut}
+              onClick={handleSignOut}
+              style={{ width: '100%' }}
+            >
+              Sign Out
+            </div>
           </div>
         ) : (
           <div
@@ -613,7 +811,6 @@ const Header = ({ border }) => {
           </div>
         )}
       </div>
-      {renderMenu}
       <WFTMModal
         visible={wftmModalVisible}
         onClose={() => dispatch(ModalActions.hideWFTMModal())}

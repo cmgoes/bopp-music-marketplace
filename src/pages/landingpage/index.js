@@ -6,6 +6,7 @@ import cx from 'classnames';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 // import ReactPlayer from 'react-player';
 
+import Contact from 'components/Contact';
 import { Categories } from 'constants/filter.constants';
 import HeaderActions from 'actions/header.actions';
 import FilterActions from 'actions/filter.actions';
@@ -49,7 +50,7 @@ const cards = [
     icon: card4,
     title: 'Maximum Security',
     description:
-      'The Bopp Music marketplace authenticates game collections and NFTs so users can avoid scams.',
+      'The Bopp Music marketplace authenticates music collections and NFTs so users can avoid scams.',
     path: '/explore',
   },
 ];
@@ -182,6 +183,7 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
+      <Contact />
       <div className={styles.footer}>
         {/* <img src={logo} alt="logo" className={styles.logo} /> */}
         <a
