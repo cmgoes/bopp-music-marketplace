@@ -1,8 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
+// import Checkbox from '@material-ui/core/Checkbox';
 import './contact.scss';
 
 import AppStore from 'assets/imgs/appStore.png';
@@ -42,11 +42,11 @@ const Contact = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <p className={classes.description}>
+      {/* <p className={classes.description}>
         Truth Social in America&apos;s &quot;Big Tent&quot; social media
         platform that encourages an open, free, and honest global conversation
         without discriminating against political ideology.
-      </p>
+      </p> */}
       <div className={classes.storeButtonBar}>
         <a
           className={classes.storeButton}
@@ -65,7 +65,7 @@ const Contact = () => {
           <img src={PlayStore} alt="" width="100%" height="100%" />
         </a>
       </div>
-      <div className={classes.formTitle}>Join the Waiting List!</div>
+      <div className={classes.formTitle}>Join for updates!</div>
       <div className={classes.textField}>
         <TextField fullWidth variant="outlined" label="First Name" />
       </div>
@@ -75,10 +75,10 @@ const Contact = () => {
       <div className={classes.textField}>
         <TextField fullWidth variant="outlined" label="Email Address" />
       </div>
-      <FormControlLabel
+      {/* <FormControlLabel
         control={<Checkbox color="primary" />}
         label="I agree to TRUTH Social's & I also agree to receive emails from TRUTH Social and understand that I may opt out of TRUTH Social's subscription at any"
-      />
+      /> */}
     </div>
   );
 };
