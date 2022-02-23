@@ -36,6 +36,24 @@ const useStyles = makeStyles(() => ({
     height: 60,
     marginRight: 8,
   },
+  join: {
+    height: '55px',
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    paddingLeft: '20px',
+    paddingRight: '20px',
+    boxSizing: 'border-box',
+    padding: '8px 12px 11px 12px',
+    borderRadius: '10px',
+    border: '1px solid rgba(0, 0, 0, 0.2)',
+    backgroundColor: '#ccafff',
+    opacity: 1,
+    fontSize: 18,
+    color: '#000',
+    width: '160px',
+    cursor: 'pointer',
+  },
 }));
 
 const Contact = () => {
@@ -75,6 +93,7 @@ const Contact = () => {
       <div className={classes.textField}>
         <TextField fullWidth variant="outlined" label="Email Address" />
       </div>
+      <button className={classes.join}>submit</button>
       {/* <FormControlLabel
         control={<Checkbox color="primary" />}
         label="I agree to TRUTH Social's & I also agree to receive emails from TRUTH Social and understand that I may opt out of TRUTH Social's subscription at any"
